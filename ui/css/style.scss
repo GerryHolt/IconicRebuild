@@ -9,7 +9,7 @@
 /* ========================================================================= */
 
 	html, body {
-
+		font: normal 18px/1.5 $main-font;
     }
 
 /* != SELECTION STYLES (Leaving these blank will show no indication of text selection) ===== */
@@ -56,19 +56,33 @@
     }
 
     h2 {
-
+		font: 400 54px/1.5 "NewCaledonia";
+		letter-spacing:-3px;
+		padding:3px 0;
     }
 
     h3 {
-
+		font:italic 400 46px/1.5 "Benton";
     }
 
     h4 {
-
+		font:italic 400 24px/0.9 "Benton";
     }
 
     h5 {
-
+		font: 500 16px/1.5 "Barlow";
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		&.icon-slash {
+			&:before {
+				font-size:18px;
+				vertical-align: text-bottom;
+			}
+			&:after {
+				font-size:18px;
+				vertical-align: text-bottom;
+			}
+		}
     }
 
     h6 {
@@ -100,11 +114,22 @@
     }
 
     .wrap {
-        max-width: 1180px;
+        max-width: 1220px;
         width: 100%;
         margin: 0 auto;
         padding: 0 20px;
     }
+
+	.icons {
+		position:relative;
+		a {
+			top:0;
+			position:absolute;
+			display:block;
+			width:15px;
+			height:15px;
+		}
+	}
 
 
 
@@ -194,6 +219,319 @@
         }
     }
 
+	.category {
+		text-transform: uppercase;
+		font:500 10px/1.5 "Barlow";
+		letter-spacing:1px;
+		a {
+			color:#000;
+		}
+		&:before{
+			font-size:8px;
+		}
+		&:after{
+			font-size:8px;
+		}
+
+	}
+
+	.meta-featured {
+		font:400 12px/1.5 "NewCaledonia";
+		text-transform: uppercase;
+		span {
+			font-style:italic;
+			text-transform: lowercase;
+		}
+	}
+
+	.meta {
+		font:400 12px/1.5 "NewCaledonia";
+		text-transform: uppercase;
+		span {
+			font-style:italic;
+			text-transform: lowercase;
+		}
+	}
+
+	.feature-story {
+		img {
+			padding-bottom:35px;
+		}
+		.feature-info {
+			display:flex;
+			.black-bar {
+				max-width:68px;
+				width:100%;
+				background-color:#000;
+				margin-right:17px
+			}
+			.feature-textarea {
+				a {
+					color:#000;
+				}
+			}
+			.feature-content {
+				font:italic 400 28px/0.9 "Benton";
+				padding-right:20px;
+				padding-bottom:30px;
+			}
+		}
+	}
+
+	#section-divider {
+		max-width:1180px;
+		width:100%;
+		margin:0 auto;
+		height:1px;
+		background-color:#000;
+	}
+
+	.top-content {
+		display:inline-block;
+		vertical-align: top;
+		max-width:870px;
+		width:100%;
+		margin-right:25px;
+		margin-bottom:25px;
+	}
+
+	.content {
+		display:inline-block;
+		vertical-align: top;
+		max-width:870px;
+		width:100%;
+		margin-right:25px;
+		margin-bottom:25px;
+	}
+
+	.social-bar {
+		font-size:0;
+		li {
+			font-size:15px;
+			display:inline-block;
+			padding:0 15px;
+			&:first-child {
+				padding-left:0px;
+			}
+			&:last-child {
+				padding-right:0px;
+			}
+		}
+	}
+
+	.featured-side-bar {
+		background-color:#f2f2f2;
+		padding:40px;
+		display:inline-block;
+		vertical-align: top;
+		max-width:280px;
+		width:100%;
+		text-align:center;
+		margin-bottom:25px;
+		h5 {
+			padding: 50px 0 30px;
+		}
+		.img-border {
+			font-size:0;
+			height:142px;
+			width:142px;
+			border-radius:50%;
+			border:1px solid #000;
+			margin:0 auto;
+		}
+		img {
+			border-radius:50%;
+			background-color:#fff;
+			background-size:142px 142px;
+			border:10px solid #fff;
+		}
+		.icon-double-slash {
+			padding:12px 0 35px;
+			font:400 10px/1.5 "Barlow";
+			position:relative;
+			text-transform:uppercase;
+			letter-spacing: 1px;
+			a {
+				color:#000;
+			}
+			&:before {
+				padding-right:10px;
+				font-size:9px;
+			}
+			&:after {
+				padding-left:10px;
+				font-size:9px;
+			}
+			&:last-child {
+				padding-bottom:0px;
+			}
+		}
+	}
+
+	.side-bar {
+		display:inline-block;
+		vertical-align: top;
+		max-width:280px;
+		width:100%;
+		text-align:center;
+		border-left:1px solid #000;
+		.social-bar {
+			padding:20px 0;
+		}
+		h4 {
+			line-height:1.2;
+			padding:0 50px 25px;
+		}
+		.side-item {
+			margin-bottom:55px;
+			form {
+				margin:20px 0 55px;
+				input {
+					margin-bottom:5px;
+					border:1px solid #000;
+					max-width:220px;
+					width:100%;
+					padding:7px 0;
+					&::placeholder {
+						font:500 10px/1.5 "Barlow";
+						color:#000;
+						text-align:center;
+					}
+				}
+				.submit {
+					margin:0;
+					font:500 10px/1.5 "Barlow";
+					background-color:#000;
+					color:#fff;
+					text-transform: uppercase;
+				}
+			}
+		}
+		.why-us {
+			padding:55px 0;
+		}
+	}
+
+
+	#header {
+		padding-top:145px;
+
+		.logo {
+			text-align: center;
+		}
+		.nav {
+			padding:40px 0;
+			text-transform: lowercase;
+			border-bottom:1px solid #000;
+			position:relative;
+			.search-btn {
+				position: absolute;
+			    top: 48px;
+			    right: 285px;
+				.icon-search {
+					width:16px;
+					height:16px;
+					font-size:16px;
+				}
+			}
+			ul {
+				font-size:0;
+				max-width:600px;
+				margin: 0 auto;
+				li {
+					display:inline-block;
+
+					padding:0 25px;
+					a {
+						font:italic 500 18px/1.5 "Benton";
+						letter-spacing:4px;
+						color:#000;
+					}
+				}
+			}
+		}
+	}
+
+	#home-featured {
+		padding:25px 0 0;
+
+	}
+
+	#home-content {
+		.wrap {
+			padding-top:40px;
+		}
+		.content {
+			#section-divider {
+				margin:45px 0 45px;
+			}
+			h3 {
+				text-align: center;
+				padding:0 0 45px;
+			}
+			h5 {
+				text-align: center;
+				padding-bottom:40px;
+				&.icon-slash {
+					&:before {
+						font-size:18px;
+						vertical-align: text-bottom;
+					}
+					&:after {
+						font-size:18px;
+						vertical-align: text-bottom;
+					}
+				}
+			}
+			.featured-list {
+				font-size:0;
+				text-align: center;
+				.featured-item {
+					display:inline-block;
+					width:33%;
+					a {
+						color:#000;
+					}
+					h4 {
+						padding:15px;
+					}
+					img {
+						padding-bottom:20px;
+					}
+				}
+			}
+		}
+	}
+
+	#story-featured {
+		padding:20px 0 35px;
+		text-align: center;
+		h5 {
+			padding:25px 0;
+		}
+		.story-title {
+			font:italic 44px/0.9 "benton";
+			margin-bottom:25px;
+		}
+	}
+
+	#story-content {
+		.wrap {
+			padding-top:40px;
+		}
+		.content {
+			padding:0 45px;
+			p {
+				font:400 18px/1.5 "NewCaledonia";
+				padding:15px 0;
+				span {
+					font-weight: 300;
+					font-family: "Benton";
+				}
+			}
+
+		}
+	}
 
 /* ========================================================================= */
 /* MEDIA QUERIES */

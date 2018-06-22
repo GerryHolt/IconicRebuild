@@ -25,6 +25,16 @@ jQuery(function($){
             'transform'       : 'translate3d('+x+'px, '+y+'px, 0)'
         });
     };
+
+    // AUTO HEIGHT SIDEBAR
+    $(window).bind('load', function() {
+        var heightc = $('.content').height();
+        var heights = $('.side-bar').height();
+        if (heightc > heights) {
+            $('.side-bar').height(heightc);
+        }
+    });
+
 /*
     $(document).scroll(function(){
         var nm = $("html").scrollTop();
