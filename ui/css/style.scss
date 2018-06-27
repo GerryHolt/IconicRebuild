@@ -120,6 +120,24 @@
         padding: 0 20px;
     }
 
+	.half {
+		display:inline-block;
+		width:50%;
+	}
+
+	.two-third {
+		display:inline-block;
+		width:70%;
+		vertical-align: top;
+		padding-right:55px;
+	}
+
+	.one-third {
+		display:inline-block;
+		width:30%;
+		vertical-align: top;
+	}
+
 	.icons {
 		position:relative;
 		a {
@@ -521,6 +539,7 @@
 		}
 		.content {
 			padding:0 45px;
+			font-size:0px;
 			p {
 				font:400 18px/1.5 "NewCaledonia";
 				padding:15px 0;
@@ -529,7 +548,56 @@
 					font-family: "Benton";
 				}
 			}
-
+			.caption-section {
+				p {
+					font:400 14px/1.2 "Barlow";
+					padding:0 150px 15px 10px;
+				}
+			}
+			.quote-section {
+				vertical-align: top;
+				p {
+					padding-top:115px;
+					text-align: center;
+					font:italic 400 28px/1 "Benton";
+				}
+			}
+			.icon-quotes {
+				position:relative;
+				&:before {
+					color:#000;
+					margin-left: auto;
+					font-size:60px;
+					margin-right: auto;
+					top:45px;
+					left: 0;
+					right: 0;
+					position:absolute;
+					width:40px;
+					height:52px;
+				}
+			}
+			.fast-facts {
+				h4 {
+					font:500 36px/0.9 "Barlow";
+					text-transform: uppercase;
+					padding-bottom:15px;
+				}
+				p {
+					font:400 18px/1.1 "Barlow";
+					padding:10px 0;
+				}
+			}
+		}
+		#section-divider{
+			margin-top:20px;
+		}
+		.photo-credit {
+			p {
+				padding-top:5px;
+				text-transform: uppercase;
+				font:400 14px/1.2 "Barlow";
+			}
 		}
 	}
 

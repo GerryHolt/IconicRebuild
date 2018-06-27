@@ -356,7 +356,7 @@
 .icon-twitter:before {
   content: "\62";
 }
-.icon-instagrem:before {
+.icon-instagram:before {
   content: "\66";
 }
 .icon-play:before {
@@ -376,4 +376,7 @@
 }
 .icon-double-slash:after {
   content: "\61";
+}
+.icon-quotes:before {
+  content: "\69";
 }

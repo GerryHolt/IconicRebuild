@@ -434,7 +434,7 @@ input[type=text]::-ms-clear {
 .icon-twitter:before {
   content: "\62"; }
 
-.icon-instagrem:before {
+.icon-instagram:before {
   content: "\66"; }
 
 .icon-play:before {
@@ -454,6 +454,9 @@ input[type=text]::-ms-clear {
 
 .icon-double-slash:after {
   content: "\61"; }
+
+.icon-quotes:before {
+  content: "\69"; }
 
 /* ========================================================================= */
 /* !SASS VARIABLES & MIXINS */
@@ -574,6 +577,21 @@ h5 {
   width: 100%;
   margin: 0 auto;
   padding: 0 20px; }
+
+.half {
+  display: inline-block;
+  width: 50%; }
+
+.two-third {
+  display: inline-block;
+  width: 70%;
+  vertical-align: top;
+  padding-right: 55px; }
+
+.one-third {
+  display: inline-block;
+  width: 30%;
+  vertical-align: top; }
 
 .icons {
   position: relative; }
@@ -898,13 +916,51 @@ input[type=submit], button {
   padding-top: 40px; }
 
 #story-content .content {
-  padding: 0 45px; }
+  padding: 0 45px;
+  font-size: 0px; }
   #story-content .content p {
     font: 400 18px/1.5 "NewCaledonia";
     padding: 15px 0; }
     #story-content .content p span {
       font-weight: 300;
       font-family: "Benton"; }
+  #story-content .content .caption-section p {
+    font: 400 14px/1.2 "Barlow";
+    padding: 0 150px 15px 10px; }
+  #story-content .content .quote-section {
+    vertical-align: top; }
+    #story-content .content .quote-section p {
+      padding-top: 115px;
+      text-align: center;
+      font: italic 400 28px/1 "Benton"; }
+  #story-content .content .icon-quotes {
+    position: relative; }
+    #story-content .content .icon-quotes:before {
+      color: #000;
+      margin-left: auto;
+      font-size: 60px;
+      margin-right: auto;
+      top: 45px;
+      left: 0;
+      right: 0;
+      position: absolute;
+      width: 40px;
+      height: 52px; }
+  #story-content .content .fast-facts h4 {
+    font: 500 36px/0.9 "Barlow";
+    text-transform: uppercase;
+    padding-bottom: 15px; }
+  #story-content .content .fast-facts p {
+    font: 400 18px/1.1 "Barlow";
+    padding: 10px 0; }
+
+#story-content #section-divider {
+  margin-top: 20px; }
+
+#story-content .photo-credit p {
+  padding-top: 5px;
+  text-transform: uppercase;
+  font: 400 14px/1.2 "Barlow"; }
 
 /* ========================================================================= */
 /* MEDIA QUERIES */
