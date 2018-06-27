@@ -1,45 +1,11 @@
-<!DOCTYPE html>
-<html lang="en-US" prefix="og: http://ogp.me/ns#">
-<head>
-    <meta charset="utf-8" />
-    <meta name="MSSmartTagsPreventParsing" content="true" /><!--[if lte IE 9]><meta http-equiv="X-UA-Compatible" content="IE=Edge"/><![endif]-->
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-    <title>Title</title>
-    <link type="text/plain" rel="author" href="../authors.txt" />
-    <link type="image/x-icon" rel="shortcut icon" href="../favicon.ico" />
-    <!-- Remove When Adding <?php wp_head(); ?> -->
-    <link type="text/css" rel="stylesheet" media="all" href="../ui/css/style.css" />
-    <script src="../ui/js/jquery.js" type="text/javascript"></script>
-    <!-- End Remove -->
-</head>
+<?php
+/*
+   Template Name: Story
+*/
 
-<body>
-<!--
-    When starting wp replace body with this
-    <body <?php body_class(); ?>>
--->
+get_header(); the_post(); ?>
 
-    <section id="header">
-        <div class="wrap">
-            <div class="logo">
-                <a href="#"><img src="/ui/images/logo.png" /></a>
-            </div>
-            <div class="nav">
-                <ul class="main-nav">
-                    <li><a href="#">Design</a></li>
-                    <li><a href="#">Style</a></li>
-                    <li><a href="#">People</a></li>
-                    <li><a href="#">Food</a></li>
-                    <li><a href="#">Craves</a></li>
-                </ul>
-                <div class="search-btn">
-                    <ul class="util-nav">
-                        <li class="icon-search"></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
+
 
     <section id="story-featured">
         <div class="wrap">
@@ -205,53 +171,6 @@
     </section>
 
 
-    <section id="footer">
-        <div class="wrap">
-            <div class="one-third foot-social">
-                <p>
-                    Follow us
-                </p>
-                <ul class="social-bar">
-                    <li class="icon-facebook icons"><a href="#"></a></li>
-                    <li class="icon-pinterest icons"><a href="#"></a></li>
-                    <li class="icon-twitter icons"><a href="#"></a></li>
-                    <li class="icon-instagram icons"><a href="#"></a></li>
-                    <li class="icon-play icons"><a href="#"></a></li>
-                </ul>
-            </div>
-            <div class="one-third foot-logo">
-                <img src="/ui/images/logo-vert.png"  />
-            </div>
-            <div class="one-third foot-sub">
-                <p>
-                    Subscribe for exclusive offers<br /> and the latest from ICONIC
-                </p>
-                <form>
-                    <input type="text" name="email" placeholder="EMAIL">
-                    <input type="submit" value="SUBSCRIBE" class="submit">
-                </form>
-            </div>
-        </div>
-        <div class="foot-util">
-            <p>
-                &copy;2018 ICONIC - ALL RIGHTS RESERVED
-            </p>
-            <ul>
-                <li><a href="">contact</a></li>
-                <li><a href="">privacy</a></li>
-                <li><a href="">terms</a></li>
-                <li><a href="">disclosure</a></li>
-            </ul>
-        </div>
-
-    </section>
 
 
-    <!-- Remove when adding <?php wp_footer(); ?> -->
-    <script src="../ui/js/modernizr.js"></script>
-    <script src="../ui/js/svgxuse.js"></script> <!-- SVG Polyfill -->
-    <script src="../ui/js/jquery.plugins.js" type="text/javascript"></script>
-    <script src="../ui/js/jquery.init.js" type="text/javascript"></script>
-    <!-- End Remove -->
-</body>
-</html>
+<?php get_footer(); ?>

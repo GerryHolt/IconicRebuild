@@ -812,7 +812,7 @@ input[type=submit], button {
         border: 1px solid #000;
         max-width: 220px;
         width: 100%;
-        padding: 7px 0; }
+        padding: 5px 0; }
         .side-bar .side-item form input::-webkit-input-placeholder {
           font: 500 10px/1.5 "Barlow";
           color: #000;
@@ -831,7 +831,7 @@ input[type=submit], button {
           text-align: center; }
       .side-bar .side-item form .submit {
         margin: 0;
-        font: 500 10px/1.5 "Barlow";
+        font: 500 10px/2 "Barlow";
         background-color: #000;
         color: #fff;
         text-transform: uppercase; }
@@ -961,6 +961,112 @@ input[type=submit], button {
   padding-top: 5px;
   text-transform: uppercase;
   font: 400 14px/1.2 "Barlow"; }
+
+#category-content {
+  padding-top: 75px; }
+  #category-content .featured-list {
+    font-size: 0;
+    text-align: center; }
+    #category-content .featured-list h3 {
+      padding-top: 5px;
+      padding-bottom: 75px; }
+    #category-content .featured-list .featured-item {
+      display: inline-block;
+      width: 33%;
+      text-align: left;
+      vertical-align: top; }
+      #category-content .featured-list .featured-item h2 {
+        font-size: 36px; }
+      #category-content .featured-list .featured-item p {
+        font-size: 14px;
+        width: 360px; }
+      #category-content .featured-list .featured-item a {
+        color: #000; }
+      #category-content .featured-list .featured-item .shop-btn {
+        font: 500 12px/1 "Barlow";
+        padding: 3px 0;
+        display: block;
+        margin: 15px 0 0;
+        border: 1px solid #000;
+        width: 35px;
+        text-align: center;
+        text-transform: uppercase; }
+      #category-content .featured-list .featured-item h4 {
+        padding: 15px; }
+      #category-content .featured-list .featured-item img {
+        padding-bottom: 20px; }
+  #category-content #section-divider {
+    margin: 50px 0; }
+
+#footer {
+  min-height: 400px;
+  background-color: #141414;
+  text-align: center; }
+  #footer .foot-social {
+    padding-top: 150px;
+    color: #fff; }
+    #footer .foot-social p {
+      font: italic 400 20px/1 "Benton";
+      padding-bottom: 20px; }
+  #footer .foot-logo {
+    margin-top: 50px; }
+  #footer .foot-sub {
+    padding-top: 135px;
+    color: #fff; }
+    #footer .foot-sub p {
+      font: italic 400 20px/1.2 "Benton"; }
+    #footer .foot-sub form {
+      margin: 20px 0 55px; }
+      #footer .foot-sub form input {
+        margin-bottom: 15px;
+        border: 1px solid #fff;
+        max-width: 220px;
+        width: 100%;
+        padding: 5px 5px;
+        background-color: #141414;
+        color: #fff;
+        font: 500 15px/1.5 "Barlow"; }
+        #footer .foot-sub form input::-webkit-input-placeholder {
+          font: 500 10px/1.5 "Barlow";
+          color: #fff;
+          text-align: center; }
+        #footer .foot-sub form input:-ms-input-placeholder {
+          font: 500 10px/1.5 "Barlow";
+          color: #fff;
+          text-align: center; }
+        #footer .foot-sub form input::-ms-input-placeholder {
+          font: 500 10px/1.5 "Barlow";
+          color: #fff;
+          text-align: center; }
+        #footer .foot-sub form input::placeholder {
+          font: 500 10px/1.5 "Barlow";
+          color: #fff;
+          text-align: center; }
+      #footer .foot-sub form .submit {
+        margin: 0;
+        font: 500 10px/2 "Barlow";
+        background-color: #141414;
+        color: #fff;
+        text-transform: uppercase; }
+  #footer .foot-util {
+    text-align: left;
+    margin-left: 20px; }
+    #footer .foot-util p {
+      display: inline-block;
+      font: 500 10px/1 "Barlow";
+      color: #353535;
+      text-transform: uppercase;
+      margin-right: 30px; }
+    #footer .foot-util ul {
+      display: inline-block;
+      font: 500 10px/1 "Barlow";
+      text-transform: uppercase; }
+      #footer .foot-util ul li {
+        display: inline-block; }
+      #footer .foot-util ul a {
+        color: #353535;
+        display: block;
+        padding: 10px; }
 
 /* ========================================================================= */
 /* MEDIA QUERIES */
