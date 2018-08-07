@@ -4,7 +4,7 @@
 
 /*------------------------------BENTON-------------------------------*/
 
-@font-face {
+/* @font-face {
     font-family: 'Benton';
     src: url('../fonts/benton/BentonModDisp-Light.woff2') format('woff2'),
         url('../fonts/benton/BentonModDisp-Light.woff') format('woff');
@@ -18,7 +18,7 @@
         url('../fonts/benton/BentonModDisp-LightItalic.woff') format('woff');
     font-weight: 300;
     font-style: italic;
-}
+} */
 
 @font-face {
     font-family: 'Benton';
@@ -71,7 +71,7 @@
 
 /*------------------------------BARLOW-------------------------------*/
 
-@font-face {
+/* @font-face {
     font-family: 'Barlow';
     src: url('../fonts/barlow/BarlowCondensed-Thin.woff2') format('woff2'),
         url('../fonts/barlow/BarlowCondensed-Thin.woff') format('woff');
@@ -117,7 +117,7 @@
         url('../fonts/barlow/BarlowCondensed-LightItalic.woff') format('woff');
     font-weight: 300;
     font-style: italic;
-}
+}*/
 
 @font-face {
     font-family: 'Barlow';
@@ -167,7 +167,7 @@
     font-style: normal;
 }
 
-@font-face {
+/* @font-face {
     font-family: 'Barlow';
     src: url('../fonts/barlow/BarlowCondensed-Bold.woff2') format('woff2'),
         url('../fonts/barlow/BarlowCondensed-Bold.woff') format('woff');
@@ -181,9 +181,9 @@
         url('../fonts/barlow/BarlowCondensed-BoldItalic.woff') format('woff');
     font-weight: 700;
     font-style: italic;
-}
+} */
 
-@font-face {
+/* @font-face {
     font-family: 'Barlow';
     src: url('../fonts/barlow/BarlowCondensed-ExtraBold.woff2') format('woff2'),
         url('../fonts/barlow/BarlowCondensed-ExtraBold.woff') format('woff');
@@ -213,7 +213,7 @@
         url('../fonts/barlow/BarlowCondensed-BlackItalic.woff') format('woff');
     font-weight: 900;
     font-style: italic;
-}
+}*/
 
 /*------------------------------NewCaledonia-------------------------------*/
 
@@ -265,7 +265,7 @@
     font-style: italic;
 }
 
-@font-face {
+/* @font-face {
     font-family: 'NewCaledonia';
     src:url('../fonts/newcaledonia/NewCaledoniaLTStd-Black.woff2') format('woff2'),
        url('../fonts/newcaledonia/NewCaledoniaLTStd-Black.woff') format('woff');
@@ -279,7 +279,7 @@
        url('../fonts/newcaledonia/NewCaledoniaLTStd-BlackIt.woff') format('woff');
     font-weight: 900;
     font-style: italic;
-}
+}*/
 
 /*------------------------------IconicSocial-------------------------------*/
 
@@ -379,4 +379,16 @@
 }
 .icon-quotes:before {
   content: "\69";
+}
+.icon-i-logo:before {
+  content: "\6a";
+}
+.icon-mail:before {
+  content: "\6c";
+}
+.icon-left-arrow:before {
+  content: "\6b";
+}
+.icon-right-arrow:before {
+  content: "\6d";
 }

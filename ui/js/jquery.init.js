@@ -35,6 +35,23 @@ jQuery(function($){
         }
     });
 
+    // VIDEO POPUP
+    $('.popup-youtube, .popup-vimeo, .popup-gmaps').magnificPopup({
+      disableOn: 700,
+      type: 'iframe',
+      mainClass: 'mfp-fade',
+      removalDelay: 160,
+      preloader: false,
+
+      fixedContentPos: false
+    });
+
+    // MOBILE TOGGLE
+    $('#m-toggle').on('click',function(){
+        $(this).toggleClass('x');
+        $('#main-nav').slideToggle(150);
+    });
+
 /*
     $(document).scroll(function(){
         var nm = $("html").scrollTop();
