@@ -392,3 +392,9 @@
 .icon-right-arrow:before {
   content: "\6d";
 }
+.icon-angle-left:before {
+  content: "\6f";
+}
+.icon-angle-right:before {
+  content: "\70";
+}
