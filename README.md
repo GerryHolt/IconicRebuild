@@ -2,6 +2,36 @@
 
 Original Developer: Gerry Holt
 
+### 1.3.2
+Removed Sumo Plugin and manually added Sumo to header.
+
+### 1.3.1
+Fixed masonry by adding in imagesloaded library forcing masonry to wait for all images to load in before capturing item height for sorting
+lots of various style fixes
+
+### 1.3.0
+Added in sponsor slider system and ability to choose a fading or slider or sliding slider
+updated icon fonts again
+
+### 1.2.1
+Changed story headers to be more like homepage header
+lots of various style fixes
+
+### 1.2.0
+Added Slider system
+update icon fonts for slider
+
+### 1.1.3
+lots of various style fixes
+
+### 1.1.0
+Added Masonry to Craves Page
+added sticky sidebar
+
+### 1.0.0
+Launch!
+A Bunch of stuff was done! It's like magic (and also like someone forgot to track updates!)
+
 ### 0.0.1
 Initial Commit!
 

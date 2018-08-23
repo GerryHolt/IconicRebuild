@@ -13,7 +13,8 @@
     <!-- <link type="image/x-icon" rel="shortcut icon" href="../favicon.ico" /> -->
     <link rel="shortcut icon" href="/ui/images/Iconic-i-favicon-30x30.png" type="image/x-icon" />
 <link rel="apple-touch-icon" sizes="180x180" href="/ui/images/Iconic-i-favicon-30x30.png">
-
+<link rel="stylesheet" type="text/css" href="/ui/css/oldcss/style.css"/>
+<link rel="stylesheet" type="text/css" href="/ui/css/oldcss/iconi2.css"/>
     <?php wp_head(); ?>
 
 </head>
@@ -21,27 +22,27 @@
 <body <?php body_class(); ?>>
 
 
-    <section id="header">
-        <div class="wrap">
-            <div class="logo">
-                <a href="<?php bloginfo('url'); ?>"><img src="/ui/images/logo.png" /></a>
-            </div>
-            <div id="m-toggle" class="icon-i-logo">
-                <span></span>
-            </div>
-            <div class="nav">
-                <?php wp_nav_menu('menu=main-nav&container='); ?>
-                <div class="search-btn">
-                    <ul class="util-nav">
-                        <form action="<?php bloginfo('url'); ?>" method="get" id="searchform">
-                            <input type="checkbox" />
-                            <span class="icon-search"></span>
-                            <input type="text" name="s" class="icon-search" />
-                        </form>
-                    </ul>
-                </div>
-            </div>
+  <section id="header">
+      <div class="wrap">
+          <div class="logo">
+              <a href="<?php bloginfo('url'); ?>"><img src="/ui/images/logo.png" /></a>
+          </div>
+          <div id="m-toggle" class="icon-i-logo">
+              <span></span>
+          </div>
+          <div class="nav">
+              <?php wp_nav_menu('menu=main-nav&container='); ?>
+              <div class="search-btn">
+                  <ul class="util-nav">
+                      <form action="<?php bloginfo('url'); ?>" method="get" id="searchform">
+                          <input type="checkbox" />
+                          <span class="icon-search"></span>
+                          <input type="text" name="s" class="icon-search" />
+                      </form>
+                  </ul>
+              </div>
+          </div>
 
 
-        </div>
-    </section>
+      </div>
+  </section>

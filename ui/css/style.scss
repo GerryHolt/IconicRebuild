@@ -1103,15 +1103,15 @@
 			.home-slide-content {
 				position:absolute;
 				bottom: 0;
-    font-size: 18px;
-    background-color: rgba(255,255,255,0.8);
-    padding: 20px 20px 40px 20px;
-		visibility:none;
-		opacity:0;
-		transition: visibility 0s, opacity 0.3s linear;
-		&:hover {
-			display:hidden;
-		}
+			    font-size: 18px;
+			    background-color: rgba(255,255,255,0.8);
+			    padding: 20px 20px 40px 20px;
+				visibility:none;
+				opacity:0;
+				transition: visibility 0s, opacity 0.3s linear;
+				&:hover {
+					display:hidden;
+				}
 			}
 			a {
 				&:hover + .home-slide-content {
@@ -1119,17 +1119,23 @@
 					opacity:1;
 				}
 			}
+			.home-slide-content {
+				&:hover {
+					visibility:visible;
+					opacity:1;
+				}
+			}
 		}
 
 		.owl-nav {
-			top:40%;
+			top:300px;
 		}
 		.owl-prev {
 			position:absolute;
 			left:-10px;
 			color:#fff;
 			-webkit-text-stroke-width: 1px;
-   -webkit-text-stroke-color: black;
+  			-webkit-text-stroke-color: black;
 			font-family: monospace !important;
 			font-size:58px!important;
 		}
@@ -1138,11 +1144,66 @@
 			right:-10px;
 			color:#fff;
 			-webkit-text-stroke-width: 1px;
-   -webkit-text-stroke-color: black;
+  			-webkit-text-stroke-color: black;
 			font-family: monospace !important;
 			font-size:58px!important;
 		}
 	}
+
+	.home-fade {
+
+		.owl-item {
+			position:relative;
+			.home-slide-content {
+				position:absolute;
+				bottom: 0;
+				font-size: 18px;
+				background-color: rgba(255,255,255,0.8);
+				padding: 20px 20px 40px 20px;
+				visibility:none;
+				opacity:0;
+				transition: visibility 0s, opacity 0.3s linear;
+				&:hover {
+					display:hidden;
+				}
+			}
+			a {
+				&:hover + .home-slide-content {
+					visibility: visible;
+					opacity:1;
+				}
+			}
+			.home-slide-content {
+				&:hover {
+					visibility:visible;
+					opacity:1;
+				}
+			}
+		}
+		.owl-nav {
+			top:300px;
+		}
+		.owl-prev {
+			position:absolute;
+			left:-10px;
+			color:#fff;
+			-webkit-text-stroke-width: 1px;
+  			-webkit-text-stroke-color: black;
+			font-family: monospace !important;
+			font-size:58px!important;
+		}
+		.owl-next {
+			position:absolute;
+			right:-10px;
+			color:#fff;
+			-webkit-text-stroke-width: 1px;
+  			-webkit-text-stroke-color: black;
+			font-family: monospace !important;
+			font-size:58px!important;
+		}
+	}
+
+
 
 	#story-featured {
 		padding:20px 0 35px;
@@ -1621,7 +1682,12 @@
 					padding-bottom:15px;
 					width:30%;
 					margin:0 1.5%;
-
+					.photo-credit {
+						margin-top:0;
+					}
+					.photo-caption {
+						margin-top:0;
+					}
 					p {
 						font:400 18px/1.2 "Barlow";
 						padding:0;

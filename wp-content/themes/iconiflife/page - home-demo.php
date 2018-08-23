@@ -1,6 +1,6 @@
 <?php
 /*
-   Template Name: Home
+   Template Name: Home Demo
 */
 
 get_header(); the_post();
@@ -185,44 +185,28 @@ if( $query->have_posts()) { ?>
                 </script>
             </div>
             <div id="section-divider-inside"><div class="inner-divider"></div></div>
-            <h5 class="featured-story">Featured Story</h5>
-            <?php
-            $args = array(
-                'posts_per_page' => '1',
-                'post_type' => array('design', 'style', 'people', 'food', 'travel'),
-                'orderby' => 'date',
-                'order' => 'DESC',
-                'offset' => 1
-            );
-            $query = new WP_Query( $args );
-            if( $query->have_posts()) { ?>
-                <?php while( $query->have_posts() ) {
-                    $query->the_post();?>
-                    <div class="feature-story jpibfi_container">
-                        <?php if(get_field('homepage_image')) {
-                            $featureImg = get_field('homepage_image'); ?>
-                            <a href="<?php the_permalink(); ?>"><img src="<?php echo $featureImg['sizes']['home-feature']; ?>" srcset="<?php echo $featureImg['sizes']['home-feature2x']; ?>" /></a>
-                        <?php } else { ?>
-                            <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('home-feature2x'); ?></a>
-                        <?php } ?>
-                        <div class="feature-info">
-                            <div class="black-bar"></div>
-                            <div class="feature-textarea">
-                                <div class="category icon-slash">
-                                    <?php $postType = get_post_type(); ?>
-                                    <a href="<?php echo $blogURL."/".$postType; ?>" class="jpibfi_container"><?php echo $postType; ?></a>
+            <div class="<?php the_field('slide_or_fade');?>" onclick = "void(0)">
+              <h5><?php the_field('sponsor_text'); ?></h5>
+              <div class="full-column" style="padding:<?php the_sub_field('padding_options');?>;">
+                  <div class="owl-carousel home-carousel">
+                      <?php if(have_rows('ad_slider')) {
+                          while(have_rows('ad_slider')) { the_row();
+                              $slideIMG = get_sub_field('image'); ?>
+                              <div class="slide-item">
+                                <?php if(get_sub_field('url')) {?>
+                                  <a href="<?php the_sub_field('url'); ?>" target="_blank"><img src="<?php echo $slideIMG['sizes']['in-story']; ?>" alt="<?php echo $slideIMG['alt']; ?>" srcset="<?php echo $slideIMG['sizes']['in-story2x']; ?>" /></a>
+                                <?php } else { ?>
+                                  <img src="<?php echo $slideIMG['sizes']['in-story']; ?>" alt="<?php echo $slideIMG['alt']; ?>" srcset="<?php echo $slideIMG['sizes']['in-story2x']; ?>" />
+                                <?php }?>
+                                <div class="home-slide-content">
+                                  <?php the_sub_field('content'); ?>
                                 </div>
-                                <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-                                <?php the_excerpt(); ?>
-                                <p class="meta-featured">
-                                    <?php $post_date = get_the_date( 'F j, Y' );?>
-                                    <span>by</span> <?php the_author(); ?>&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $post_date; ?>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                <?php }
-            } ?>
+                              </div>
+                          <?php } ?>
+                      <?php } ?>
+                  </div>
+              </div>
+            </div>
             <?php wp_reset_postdata(); // IMPORTANT - reset the $post object so the rest of the page works correctly ?>
             <div id="section-divider-inside"><div class="inner-divider"></div></div>
             <div class="featured-list">

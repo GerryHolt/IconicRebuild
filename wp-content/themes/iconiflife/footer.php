@@ -5,46 +5,33 @@
                 Follow us
             </p>
             <ul class="social-bar">
-                <li class="icon-facebook icons"><a href="#"></a></li>
-                <li class="icon-pinterest icons"><a href="#"></a></li>
-                <li class="icon-twitter icons"><a href="#"></a></li>
-                <li class="icon-instagram icons"><a href="#"></a></li>
-                <li class="icon-play icons"><a href="#"></a></li>
+                <li class="icon-facebook icons"><a href="<?php the_field('facebook', 'options'); ?>" target="_blank"></a></li>
+                <li class="icon-instagram icons"><a href="<?php the_field('instagram', 'options'); ?>" target="_blank"></a></li>
+                <li class="icon-twitter icons"><a href="<?php the_field('twitter', 'options'); ?>" target="_blank"></a></li>
+                <li class="icon-pinterest icons"><a href="<?php the_field('pinterest', 'options'); ?>" target="_blank"></a></li>
+                <li class="icon-play icons"><a href="<?php the_field('youtube', 'options'); ?>" target="_blank"></a></li>
             </ul>
         </div>
         <div class="one-third foot-logo">
             <img src="/ui/images/logo-vert.png"  />
         </div>
         <div class="one-third foot-sub">
-            <p>
-                Subscribe for exclusive offers<br /> and the latest from ICONIC
-            </p>
-            <form>
-                <input type="text" name="email" placeholder="EMAIL">
-                <input type="submit" value="SUBSCRIBE" class="submit">
-            </form>
+            <h4>Subscribe to receive exclusive offers and the latest from ICONIC</h4>
+            <?php echo do_shortcode( '[activecampaign form=5]' ); ?>
         </div>
     </div>
     <div class="foot-util">
         <p>
             &copy;2018 ICONIC - ALL RIGHTS RESERVED
         </p>
-        <ul>
-            <li><a href="">contact</a></li>
-            <li><a href="">privacy</a></li>
-            <li><a href="">terms</a></li>
-            <li><a href="">disclosure</a></li>
-        </ul>
+        <?php wp_nav_menu('menu=footer-nav&container='); ?>
     </div>
 
 </section>
 
 
-<!-- Remove when adding <?php wp_footer(); ?> -->
-<script src="../ui/js/modernizr.js"></script>
-<script src="../ui/js/svgxuse.js"></script> <!-- SVG Polyfill -->
-<script src="../ui/js/jquery.plugins.js" type="text/javascript"></script>
-<script src="../ui/js/jquery.init.js" type="text/javascript"></script>
-<!-- End Remove -->
+<?php wp_footer(); ?>
+<script async>(function(s,u,m,o,j,v){j=u.createElement(m);v=u.getElementsByTagName(m)[0];j.async=1;j.src=o;j.dataset.sumoSiteId='1d78a4005ef3b0009ad71f00f2280e00e8610800eace90006272780004ae9c00';v.parentNode.insertBefore(j,v)})(window,document,'script','//load.sumo.com/');</script>
+
 </body>
 </html>

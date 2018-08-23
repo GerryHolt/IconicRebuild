@@ -23,14 +23,11 @@
 
     <section id="header">
         <div class="wrap">
-            <div class="logo">
-                <a href="<?php bloginfo('url'); ?>"><img src="/ui/images/logo.png" /></a>
-            </div>
-            <div id="m-toggle" class="icon-i-logo">
+            <div id="m-toggle-story" class="icon-i-logo">
                 <span></span>
             </div>
-            <div class="nav">
-                <?php wp_nav_menu('menu=main-nav&container='); ?>
+            <div class="nav-story">
+                <?php wp_nav_menu('menu=mobile-menu&container='); ?>
                 <div class="search-btn">
                     <ul class="util-nav">
                         <form action="<?php bloginfo('url'); ?>" method="get" id="searchform">

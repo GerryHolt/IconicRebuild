@@ -33,7 +33,34 @@ add_filter( 'login_errors', '__return_null' );
 /* Post Thumbnail Sizes */
 add_theme_support( 'post-thumbnails' );
 set_post_thumbnail_size( 64, 64, true );
-//add_image_size( 'size-name', 100, 100, true);
+add_image_size( 'story-image-full', 780, false);
+add_image_size( 'full-story', 1200, false);
+add_image_size( 'in-story', 780, false);
+add_image_size( 'half-story', 600, false);
+add_image_size( 'two-third-story', 600, false);
+add_image_size( 'story-image-featured', 870, false);
+add_image_size( 'one-column', 600, false);
+add_image_size( 'two-column', 743, false);
+add_image_size( 'featured-crave', 140, 140, true);
+add_image_size( 'clinger-column', 600, false);
+add_image_size( 'home-feature', 870, 512, true);
+add_image_size( 'home-mini-feature', 250, 218, true);
+add_image_size( 'third-list-image', 600, false);
+add_image_size( 'old-stories', 342, 303, true);
+add_image_size( 'story-image-full2x', 1560, false);
+add_image_size( 'full-story2x', 2400, false);
+add_image_size( 'in-story2x', 1560, false);
+add_image_size( 'half-story2x', 1200, false);
+add_image_size( 'two-third-story2x', 1200, false);
+add_image_size( 'story-image-featured2x', 1740, false);
+add_image_size( 'one-column2x', 1200, false);
+add_image_size( 'two-column2x', 1486, false);
+add_image_size( 'featured-crave2x', 280, 280, true);
+add_image_size( 'clinger-column2x', 1200, false);
+add_image_size( 'home-feature2x', 1305, 768, true);
+add_image_size( 'home-mini-feature2x', 500, 436, true);
+add_image_size( 'third-list-image2x', 1200, false);
+add_image_size( 'old-stories2x', 684, 606, true);
 
 /* Declare Nav Menu Areas */
 if ( function_exists( 'register_nav_menus' ) ) {
@@ -126,8 +153,8 @@ function enqueue_scripts() {
     wp_enqueue_script( 'jquery', get_bloginfo( 'url' ) . '/ui/js/jquery.js', array(), null );
     wp_enqueue_script( 'modernizr', get_bloginfo( 'url' ) . '/ui/js/modernizr.js', array(), null, true );
     wp_enqueue_script( 'svgxuse', get_bloginfo( 'url' ) . '/ui/js/svgxuse.js', array(), null, true );
-    wp_enqueue_script( 'plugins', get_bloginfo( 'url' ) . '/ui/js/jquery.plugins.js', array( 'jquery' ), null, true );
-    wp_enqueue_script( 'init', get_bloginfo( 'url' ) . '/ui/js/jquery.init.js', array( 'jquery', 'plugins', 'modernizr' ), null, true );
+    wp_enqueue_script( 'plugins', get_bloginfo( 'url' ) . '/ui/js/jquery.plugins.js', array( 'jquery' ), filemtime( '/nas/content/live/iconic2/ui/js/jquery.plugins.js' ), true );
+    wp_enqueue_script( 'init', get_bloginfo( 'url' ) . '/ui/js/jquery.init.js', array( 'jquery', 'plugins', 'modernizr' ), filemtime( '/nas/content/live/iconic2/ui/js/jquery.init.js' ), true );
 }
 add_action( 'wp_enqueue_scripts', 'enqueue_scripts' );
 
@@ -137,7 +164,7 @@ add_action( 'wp_enqueue_scripts', 'enqueue_scripts' );
 /* ========================================================================= */
 
 function enqueue_styles() {
-    wp_enqueue_style( 'style', get_bloginfo( 'url' ) . '/ui/css/style.css', array(), null );
+    wp_enqueue_style( 'style', get_bloginfo( 'url' ) . '/ui/css/style.css', array(), filemtime( '/nas/content/live/iconic2/ui/css/style.css' ) );
 }
 // With Print Style Sheet
 // function enqueue_styles() {
@@ -221,7 +248,7 @@ function body_class_adjustments( $classes1 ) {
     elseif ( $is_chrome ) {
         $browser   = explode( ' ', $browser );
         $browser   = explode( '/', $browser[11] );
-        $browser   = explode( '.', $browser[1]) ;
+        $browser   = explode( '.', $browser[0]) ;
         $browser   = 'chrome-'.$browser[0];
         $classes[] = $browser;
         $classes[] = 'chrome';
@@ -306,6 +333,149 @@ function yoasttobottom() {
     return 'low';
 }
 add_filter( 'wpseo_metabox_prio', 'yoasttobottom' );
+
+/* ========================================================================= */
+/* Remove Auto P tag
+   remove p tags around acf content */
+/* ========================================================================= */
+
+function the_field_without_filters( $the_field=null ) {
+    remove_filter('acf_the_content', 'wpautop');
+    if( $the_field ) {
+      the_field( $the_field );
+    } else {
+      the_field();
+    }
+    add_filter('acf_the_content', 'wpautop');
+}
+
+/* ========================================================================= */
+/*  Add dropdown for custom classes to WYSIWYG editor */
+/* ========================================================================= */
+
+function add_style_select_buttons( $buttons ) {
+    array_unshift( $buttons, 'styleselect' );
+    return $buttons;
+}
+// Register our callback to the appropriate filter
+add_filter( 'mce_buttons_2', 'add_style_select_buttons' );
+
+/* ========================================================================= */
+/*  Add custom classes for the WYSIWYG dropdown */
+/* ========================================================================= */
+
+function my_custom_styles( $init_array ) {
+
+    $style_formats = array(
+        // These are the custom styles
+        array(
+            'title' => 'Multislash',
+            'block' => 'span',
+            'classes' => 'multislash',
+            'wrapper' => true,
+        ),
+        array(
+            'title' => 'Photo Title',
+            'block' => 'span',
+            'classes' => 'photo-title',
+            'wrapper' => true,
+        ),
+        array(
+            'title' => 'Time',
+            'block' => 'span',
+            'classes' => 'time',
+            'wrapper' => true,
+        ),
+        array(
+            'title' => 'Time Meridiem',
+            'block' => 'span',
+            'classes' => 'time-meridiem',
+            'wrapper' => true,
+        ),
+        array(
+            'title' => 'Image Span',
+            'block' => 'span',
+            'classes' => 'img-span',
+            'wrapper' => true,
+        ),
+        array(
+            'title' => 'Also Like',
+            'block' => 'span',
+            'classes' => 'also-like',
+            'wrapper' => true,
+        ),
+        array(
+            'title' => 'Manual caption',
+            'block' => 'span',
+            'classes' => 'manual-caption',
+            'wrapper' => true,
+        ),
+        array(
+            'title' => 'Barlow Text',
+            'block' => 'span',
+            'classes' => 'barlow',
+            'wrapper' => true,
+        ),
+    );
+    // Insert the array, JSON ENCODED, into 'style_formats'
+    $init_array['style_formats'] = json_encode( $style_formats );
+
+    return $init_array;
+
+}
+// Attach callback to 'tiny_mce_before_init'
+add_filter( 'tiny_mce_before_init', 'my_custom_styles' );
+
+/* ========================================================================= */
+/*  Remove the slug from published post permalinks. Only affect our CPT though.
+/* ========================================================================= */
+
+function vipx_remove_cpt_slug( $post_link, $post, $leavename ) {
+
+    if ( ! in_array( $post->post_type, array( 'design', 'food', 'travel', 'people', 'style' ) ) || 'publish' != $post->post_status )
+        return $post_link;
+
+    $post_link = str_replace( '/' . $post->post_type . '/', '/', $post_link );
+
+    return $post_link;
+}
+add_filter( 'post_type_link', 'vipx_remove_cpt_slug', 10, 3 );
+
+function vipx_parse_request_tricksy( $query ) {
+
+    // Only noop the main query
+    if ( ! $query->is_main_query() )
+        return;
+
+    // Only noop our very specific rewrite rule match
+    if ( 2 != count( $query->query )
+        || ! isset( $query->query['page'] ) )
+        return;
+
+    // 'name' will be set if post permalinks are just post_name, otherwise the page rule will match
+    if ( ! empty( $query->query['name'] ) )
+        $query->set( 'post_type', array( 'post', 'design', 'food', 'travel', 'people', 'style', 'page' ) );
+
+}
+add_action( 'pre_get_posts', 'vipx_parse_request_tricksy' );
+
+
+/* ========================================================================= */
+/* Limit length of excerpt */
+/* ========================================================================= */
+function excerpt($limit) {
+  $excerpt = explode(' ', get_the_excerpt(), $limit);
+  if (count($excerpt)>=$limit) {
+    array_pop($excerpt);
+    $excerpt = implode(" ",$excerpt).'...';
+  } else {
+    $excerpt = implode(" ",$excerpt);
+  }
+  $excerpt = preg_replace('`[[^]]*]`','',$excerpt);
+  return $excerpt;
+}
+
+
 
 
 /* ========================================================================= */
