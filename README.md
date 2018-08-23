@@ -3,7 +3,7 @@
 Original Developer: Gerry Holt
 
 ### 1.3.2
-Removed Sumo Plugin and manually added Sumo to header.
+Removed Sumo Plugin and manually added Sumo to footer.
 
 ### 1.3.1
 Fixed masonry by adding in imagesloaded library forcing masonry to wait for all images to load in before capturing item height for sorting
