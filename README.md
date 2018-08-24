@@ -2,6 +2,9 @@
 
 Original Developer: Gerry Holt
 
+### 1.3.3
+Did a very dumb thing by downloading outdated files from the ui folder from the server and then uploaded them to github. rectified this.
+
 ### 1.3.2
 Removed Sumo Plugin and manually added Sumo to footer.
 

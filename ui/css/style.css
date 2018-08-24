@@ -261,7 +261,7 @@ input[type=text]::-ms-clear {
         url('../fonts/barlow/BarlowCondensed-LightItalic.woff') format('woff');
     font-weight: 300;
     font-style: italic;
-}*/
+} */
 @font-face {
   font-family: 'Barlow';
   src: url("../fonts/barlow/BarlowCondensed-Regular.woff2") format("woff2"), url("../fonts/barlow/BarlowCondensed-Regular.woff") format("woff");
@@ -343,7 +343,7 @@ input[type=text]::-ms-clear {
         url('../fonts/barlow/BarlowCondensed-BlackItalic.woff') format('woff');
     font-weight: 900;
     font-style: italic;
-}*/
+} */
 /*------------------------------NewCaledonia-------------------------------*/
 @font-face {
   font-family: 'NewCaledonia';
@@ -395,7 +395,7 @@ input[type=text]::-ms-clear {
        url('../fonts/newcaledonia/NewCaledoniaLTStd-BlackIt.woff') format('woff');
     font-weight: 900;
     font-style: italic;
-}*/
+} */
 /*------------------------------IconicSocial-------------------------------*/
 @font-face {
   font-family: "iconicsocial";
@@ -461,25 +461,16 @@ input[type=text]::-ms-clear {
 .icon-twitter:before {
   content: "\62"; }
 
-.icon-instagram:before {
-  content: "\66"; }
-
 .icon-play:before {
   content: "\65"; }
 
 .icon-slash:before {
   content: "\67"; }
 
-.icon-slash:after {
-  content: "\67"; }
-
 .icon-search:before {
   content: "\68"; }
 
 .icon-double-slash:before {
-  content: "\61"; }
-
-.icon-double-slash:after {
   content: "\61"; }
 
 .icon-quotes:before {
@@ -490,6 +481,9 @@ input[type=text]::-ms-clear {
 
 .icon-mail:before {
   content: "\6c"; }
+
+.icon-instagram:before {
+  content: "\66"; }
 
 .icon-left-arrow:before {
   content: "\6b"; }
@@ -2148,7 +2142,8 @@ input[type=submit], button {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    margin-bottom: 50px; }
+    margin-top: 20px;
+    margin-bottom: 20px; }
     #story-content .content .three-col .two-third-image {
       width: 66%;
       padding-top: 12px; }
