@@ -362,10 +362,16 @@
 .icon-slash:before {
   content: "\67";
 }
+.icon-slash:after {
+  content: "\67";
+}
 .icon-search:before {
   content: "\68";
 }
 .icon-double-slash:before {
+  content: "\61";
+}
+.icon-double-slash:after {
   content: "\61";
 }
 .icon-quotes:before {
