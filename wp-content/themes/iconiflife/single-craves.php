@@ -1,7 +1,7 @@
 <?php
 
 
-get_header('story'); the_post(); ?>
+get_header(); the_post(); ?>
 
 
 

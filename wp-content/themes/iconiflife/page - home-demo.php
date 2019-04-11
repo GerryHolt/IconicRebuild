@@ -3,7 +3,7 @@
    Template Name: Home Demo
 */
 
-get_header(); the_post();
+get_header('demo'); the_post();
 
 $blogURL = site_url(); ?>
 
@@ -358,4 +358,4 @@ if( $query->have_posts()) { ?>
     </div>
 </section>
 
-<?php get_footer(); ?>
+<?php get_footer('demo'); ?>

@@ -4,6 +4,33 @@
 
 jQuery(function($){
 
+    //replace submit with subscribe in theiaStickySidebar
+    $("._button-wrapper button").text(function (_, ctx) {
+        return ctx.replace("Submit", "Subscribe");
+    });
+    // Sticky header
+    // When the user scrolls the page, execute myFunction
+    window.onscroll = function() {myFunction()};
+
+    // Get the header
+    var header = document.getElementById("navigation");
+
+    // Get the offset position of the navbar
+    var sticky = header.offsetTop;
+
+    // Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
+    function myFunction() {
+      if (window.pageYOffset > sticky) {
+          $('#nav-placeholder').removeClass('hide');
+        header.classList.add("sticky");
+
+      } else {
+          $('#nav-placeholder').addClass('hide');
+        header.classList.remove("sticky");
+
+      }
+    }
+
     // ORPHANIZER
     $(".orphan").each(function() {
         let txt = $(this).html().trim().replace('&nbsp;',' ');
@@ -14,6 +41,34 @@ jQuery(function($){
             $(this).html(wordArray.join(" "));
         }
     });
+
+
+    // opt-in
+    $.cook = Cookies.get('opt-in');
+    if ($.cook === "on") {
+
+    } else {
+        setTimeout(function(){
+            $.magnificPopup.open({
+                items: {
+                    src: '#small-dialog' //ID OF INLINE ELEMENT
+                },
+                type:'inline',
+                mainClass: 'my-mfp-zoom-in'
+            });
+            Cookies.set("opt-in", "on", {
+                expires: 3
+            });
+        }, 25000);  // 1000 equals 1 second
+    }
+
+    $('.close-opt').click(function(){
+        $('.mfp-close').trigger('click');
+      });
+
+
+
+
 
     // PARALLAX
     $.fn.plax = function(x, y){
@@ -63,8 +118,15 @@ jQuery(function($){
 
     // MOBILE TOGGLE
     $('#m-toggle').on('click',function(){
-        $(this).toggleClass('x');
-        $('.nav').slideToggle(150);
+        $('.noshow').toggleClass('show');
+    });
+    $('#m-toggle-new').on('click',function(){
+        // $(this).toggleClass('icon-cancel');
+        $('.noshow').toggleClass('show');
+    });
+
+    $('#m-toggle-inner').on('click',function(){
+        $('.noshow').toggleClass('show');
     });
 
     $('#m-toggle-story').on('click',function(){
@@ -112,7 +174,7 @@ jQuery(function($){
         items:1,
         margin:10,
         nav:true,
-        loop:true,
+        loop:false,
         autoHeight:true,
         animateOut: 'fadeOut',
         animateIn: 'fadeIn',
@@ -120,7 +182,7 @@ jQuery(function($){
     });
 
     $( ".home-fade" ).mouseenter(function() {
-        owl.trigger('play.owl.autoplay', 4000);
+        owl.trigger('play.owl.autoplay', 8000);
     });
 
     $(document).on('keydown', function( event ) { //attach event listener
@@ -144,6 +206,8 @@ jQuery(function($){
         });
     });
 
+    // image map resizer
+    $('map').imageMapResize();
 
 
 /*

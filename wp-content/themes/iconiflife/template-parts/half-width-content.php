@@ -79,7 +79,7 @@
             // OPEN Quick Questions
             ////////////////////////////////
             if( get_row_layout() == 'quick_questions' ) { ?>
-                <div class="half-col">
+                <div class="half-col half-questions">
                     <?php if(have_rows('left_side')) {?>
                         <div class="left-side">
                             <?php while(have_rows('left_side')) { the_row();
@@ -114,9 +114,9 @@
                                         <h5><?php the_sub_field('title'); ?></h5>
                                     <?php }
                                     if(get_row_layout() == 'dek') { ?>
-                                        <p class="clinger-dak">
-                                            <?php the_sub_field('dek'); ?>
-                                        </p>
+                                        <div class="clinger-dak">
+                                            <?php the_sub_field('dek_content'); ?>
+                                        </div>
                                     <?php }
                                     if(get_row_layout() == 'questions') {?>
                                         <p class="question-title">

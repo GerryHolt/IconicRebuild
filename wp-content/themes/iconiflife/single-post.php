@@ -9,7 +9,7 @@ get_header('oldpost'); the_post(); ?>
         <div class="wrap">
             <?php $postType = get_post_type(); ?>
             <h5 class="icon-slash"><?php the_category( ' ' ); ?></h5>
-            <p class="story-title" style="padding:0 270px;">
+            <p class="story-title" >
                 <?php the_title(); ?>
             </p>
             <?php if(get_field('do_you_need_to_hide_the_author') == 'yes') {

@@ -57,26 +57,27 @@ get_header(); the_post(); ?>
                 <?php } //close layout ?>
             <?php } // close while ?>
         <?php } //close if ?>
+
         <div class="person">
             <p>
-                <span class="title"><em>Publisher</em></span><br />Renee M. Dee
+                <span class="title"><em>Publisher</em></span><br />Renee M. Dee<br/><a href="mailto:renee@iconiclife.com">renee@iconiclife.com</a>
             </p>
         </div>
         <div class="person">
             <p>
-                <span class="title"><em>Product Director</em></span><br />Rahe Riazi
+              <span class="title"><em>Advertise with Us</em></span><br />Julie Osten-Crisan<br/><a href="mailto:julie@iconiclife.com">julie@iconiclife.com</a>
             </p>
         </div>
         <div class="person">
             <p>
-                <span class="title"><em>Editor in Chief</em></span><br />Marlene Srdic
+                <span class="title"><em>Share Editorial Ideas with Us</em></span><br /><a href="mailto:ideas@iconiclife.com">ideas@iconiclife.com</a>
             </p>
         </div>
-        <div class="person">
-            <p>
-                <span class="title"><em>Web Developer</em></span><br />Gerry Holt
-            </p>
+        <!-- <div class="minispacer">
         </div>
+        <p class="m-title">
+            ICONIC LIFE DIGITAL TEAM
+        </p>
         <div class="person">
             <p>
                 <span class="title"><em>Senior Graphic Designer</em></span><br />Jimmy Johnson
@@ -101,11 +102,21 @@ get_header(); the_post(); ?>
             <p>
                 <span class="title"><em>Business Manager</em></span><br />Laura Novak
             </p>
-        </div>
+        </div> -->
     </div>
     <div class="spacer">
 
+
     </div>
+
+    <div class="ad-form">
+        <?php echo do_shortcode('[contact-form-7 id="3782" title="contact"]'); ?>
+    </div>
+
+
+<div style="clear:both;">
+
+</div>
 
 </section>
 

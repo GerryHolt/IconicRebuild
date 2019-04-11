@@ -10,18 +10,41 @@ $postid = get_the_ID();?>
     <section id="story-featured" class="jpibfi_container">
         <div class="wrap">
             <?php $postType = get_post_type(); ?>
+
+            <?php   // Get terms for post
+                 $terms = get_the_terms( $post->ID , $postType.'-categories' );
+                 // Loop over each item since it's an array
+                 if ( $terms != null ){
+                 foreach( $terms as $term ) {
+                 // Print the name method from $term which is an OBJECT
+                 $categories = $term->name ;
+                 // Get rid of the other data stored in the object, since it's not needed
+                 unset($term);
+                } } ?>
+
             <h5 class="icon-slash">
-                <?php $postType = get_post_type(); ?>
-                <a href="<?php echo $blogURL."/".$postType; ?>" class="jpibfi_container"><?php echo $postType; ?></a>
+                <?php if(isset($categories)) { ?>
+                    <a href="<?php echo $blogURL."/".$categories; ?>" class="jpibfi_container"><?php echo $categories; ?></a>
+                <?php } else {?>
+                    <a href="<?php echo $blogURL."/".$postType; ?>" class="jpibfi_container"><?php echo $postType; ?></a>
+                <?php } ?>
             </h5>
+            <?php if(get_field('do_you_need_to_hide_the_title') == 'yes') { ?>
+            <?php } else { ?>
             <h1 class="story-title">
                 <?php the_title(); ?>
             </h1>
+            <?php } ?>
             <?php if(get_field('do_you_need_to_hide_the_author') == 'yes') {
             } else { ?>
                 <p class="meta-featured">
                     <span>by</span> <?php the_author(); ?>
                 </p>
+            <?php } ?>
+            <?php if(get_field('need_byline_credits')) { ?>
+                <div class="meta-credit">
+                    <?php the_field('under_byline_credits'); ?>
+                </div>
             <?php } ?>
             <ul class="social-bar post-social">
                 <?php
@@ -40,18 +63,29 @@ $postid = get_the_ID();?>
 
     <section id="story-content">
         <div class="wrap">
-            <div class="content jpibfi_container">
-                <?php if(get_the_post_thumbnail()) { ?>
+            <?php $needSidebar = get_field('remove_sidebar');
+            if($needSidebar == 'yes') {
+                $contentWidth = "content-wide";
+            }else{
+                $contentWidth = "content";
+            }?>
+            <div class="<?php echo $contentWidth;?> jpibfi_container">
+                <?php if(has_post_thumbnail()) {?>
                     <div class="hero-image">
-                        <?php the_post_thumbnail('story-image-full'); ?>
+                        <?php if(get_field('gfycat_id')) { ?>
+                            <div style="position:relative;padding-bottom:<?php the_field('cinemagraph_padding_bottom');?>%"><iframe src='https://gfycat.com/ifr/<?php the_field('gfycat_id');?>?controls=0&hd=1' frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0' allowfullscreen></iframe></div>
+                        <?php } else { ?>
+                            <?php
+                            the_post_thumbnail('story-image-full2x'); ?>
+                        <?php } ?>
                         <?php if (get_field('does_the_hero_need_a_credit') == 'yes') {
                             $textSide = get_field('should_it_be_on_the_left_or_right?');
                             if (get_field('should_hero_credit_be_a_caption_instead?') == 'yes'){ ?>
-                                <p class="hero-caption" style="text-align:<?php echo $textSide; ?>">
+                                <p class="hero-caption" style="text-align:<?php echo $textSide; ?>; padding-right:<?php the_field('hero_credit_right_padding'); ?>;">
                                     <?php the_field('hero_credit'); ?>
                                 </p>
                             <?php }else {?>
-                                <p class="hero-credit" style="text-align:<?php echo $textSide; ?>">
+                                <p class="hero-credit" style="text-align:<?php echo $textSide; ?>; padding-right:<?php the_field('hero_credit_right_padding'); ?>;">
                                     <?php the_field('hero_credit'); ?>
                                 </p>
                             <?php } ?>
@@ -59,26 +93,26 @@ $postid = get_the_ID();?>
 
                         <?php }?>
                     </div>
-                    <?php if(get_field('sponsor_text')) { ?>
-                        <div class="sponsor-text">
-                          <p style="font-family:'Barlow'; text-align: center;">
-                          <?php the_field('sponsor_text'); ?>
-                        </p>
-                        </div>
-                    <?php }?>
+                <?php }?>
+
+                <?php if(get_field('sponsor_text')) { ?>
+                    <div class="sponsor-text">
+                      <p style="font-family:'Barlow'; text-align: center;">
+                      <?php the_field('sponsor_text'); ?>
+                    </p>
+                    </div>
+                <?php }?>
+                <?php if(get_field('do_you_need_to_hide_the_dek?') == 'yes') { ?>
+                <?php } else { ?>
                     <?php if(get_field('post_dak')) { ?>
                         <div class="story-dak">
                             <?php the_field_without_filters('post_dak'); ?>
                         </div>
-                    <?php } ?>
-                    <?php if(get_the_post_thumbnail()) { ?>
                         <div style="background: #000; width: 20%; padding: 1px; margin-left: 40%; margin-top:30px; margin-bottom:40px;"></div>
-                    <?php } else {
+                    <?php } ?>
+                <?php } ?>
 
-                    }
-                } else {
 
-                }?>
 
                 <?php if(get_field('first_letter_of_the_post')) {
                     $fontSize = get_field('first_letter_size'); ?>
@@ -157,6 +191,7 @@ $postid = get_the_ID();?>
 
                     <?php } //close post_content while
                 } //close post content if ?>
+                <?php include 'template-parts/special-content.php'; ?>
                 <?php if(get_field('end_story_credit')) { ?>
                     <div class="ending-credit">
                         <p>
@@ -164,19 +199,48 @@ $postid = get_the_ID();?>
                         </p>
                     </div>
                 <?php } ?>
-                <div id="section-divider-inside"><div class="inner-divider"></div></div>
+
+                <?php
+                    if(get_field('shop_code')) {?>
+                        <div id="section-divider-inside"><div class="inner-divider"></div></div>
+                        <div class="shop-section">
+                            <?php if(get_field('shop_title')) { ?>
+                                <h3 style="text-transform:uppercase;"><?php the_field('shop_title');?></h3>
+                            <?php } else {?>
+                                <h3 style="text-transform:uppercase;">SHOP THE LOOK</h3>
+                            <?php } ?>
+                            <!-- <img class="shop-the-look" src="/ui/images/Shop_the_Look.png" alt="" /> -->
+                            <?php the_field('shop_code'); ?>
+                        </div>
+                <?php
+                } ?>
+
 
                 <?php wp_reset_postdata(); // IMPORTANT - reset the $post object so the rest of the page works correctly ?>
+                <?php if(get_field('story_video')) {
+                    $videoImg = get_field('video_image'); ?>
+                    <div id="section-divider-inside"><div class="inner-divider"></div></div>
+                    <div class="end-story">
+                        <a class="popup-youtube arrow-right" href="https://www.youtube.com/watch?v=<?php the_field('story_video');?>"><img src="<?php echo $videoImg['sizes']['full-story'];?>" /></a>
+                        <?php if(get_field('video_credit')) {?>
+                            <p class="photo-credit" style="text-align:right">
+                                <?php the_field('video_credit'); ?>
+                            </p>
+                        <?php } ?>
+                    </div>
+                <?php }?>
 
+
+
+                <div id="section-divider-inside"><div class="inner-divider"></div></div>
                 <div class="also-like-story">
                 <h3>You May Also Like</h3>
-                <?php printr($postid); ?>
                     <div class="featured-list">
                         <?php
                         $args = array(
-                            'post__not_in' => array($postid),
+                            // 'post__not_in' => array($postid, '5476'),
                             'posts_per_page' => '3',
-                            'post_type' => $postType,
+                            'post_type' => array('design', 'style', 'people', 'food', 'travel'),
                             'orderby' => 'rand',
                         );
                         $query = new WP_Query( $args );
@@ -199,10 +263,15 @@ $postid = get_the_ID();?>
                                         <?php $post_date = get_the_date( 'F j, Y' );?>
                                         <span>by</span> <?php the_author(); ?>&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $post_date; ?>
                                     </p> -->
+                                    <?php
+                                        $secondID = get_the_ID();
+                                        $postid[] = $secondID;
+                                    ?>
                                 </div>
                             <?php }
                         }?>
                         <?php wp_reset_postdata(); // IMPORTANT - reset the $post object so the rest of the page works correctly ?>
+
                     </div>
                   </div>
 
@@ -222,7 +291,7 @@ $postid = get_the_ID();?>
 
 
                 <div class="ad-bottom">
-                    <!-- POST PAGE - Mid (Inline) -->
+                    <!-- POST PAGE - Foundation (New Size) -->
                     <script type="text/javascript">if (!window.AdButler) {
                         (function () {
                             var s = document.createElement("script");
@@ -243,7 +312,12 @@ $postid = get_the_ID();?>
                 </div>
 
             </div>
-            <?php include 'sidebar-post.php'; ?>
+            <?php
+            if($needSidebar == 'yes') {
+
+            }else{
+                include 'sidebar-post.php';
+            }?>
         </div>
     </section>
 

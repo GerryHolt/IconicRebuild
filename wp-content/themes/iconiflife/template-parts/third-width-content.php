@@ -30,8 +30,10 @@
             if( get_row_layout() == 'day_in_the_life_thirds' ) { ?>
                 <?php if(get_sub_field('select_layout')=='t-left') {
                     $flexDirection = "flex-direction: row-reverse";
+                    $padding = "0 20px 0 0";
                 } else {
                     $flexDirection = "flex-direction: unset";
+                    $padding = "0 0 0 20px";
                 }?>
                 <div class="three-col-day" style="<?php echo $flexDirection; ?>;">
                     <div class="day-image" >
@@ -50,7 +52,7 @@
                             <?php } ?>
                         <?php } ?>
                     </div>
-                    <div class="day-text">
+                    <div class="day-text" style="padding:<?php echo $padding;?>;">
                         <?php the_sub_field('text'); ?>
                     </div>
                     <div class="clearfix"></div>
@@ -74,9 +76,9 @@
                             while(have_rows('images')) { the_row();?>
                                 <?php $thirdImg = get_sub_field('image'); ?>
                                 <?php if(get_sub_field('link')) { ?>
-                                  <a href="<?php the_sub_field('link'); ?>" target="_blank"><img class="nopin" src="<?php echo $thirdImg['sizes']['two-third-story']; ?>" srcset="<?php echo $thirdImg['sizes']['two-third-story2x']; ?>" alt="<?php echo $thirdImg['alt']; ?>" /></a>
+                                  <a href="<?php the_sub_field('link'); ?>" target="_blank"><img class="nopin" src="<?php echo $thirdImg['sizes']['two-third-story']; ?>" srcset="<?php echo $thirdImg['sizes']['two-third-story2x']; ?>" alt="<?php echo $thirdImg['alt']; ?>" style="padding:<?php the_sub_field('image_padding');?>"/></a>
                                 <?php } else { ?>
-                                  <img class="jpibfi_container" src="<?php echo $thirdImg['sizes']['two-third-story']; ?>" srcset="<?php echo $thirdImg['sizes']['two-third-story2x']; ?>" alt="<?php echo $thirdImg['alt']; ?>" />
+                                  <img class="jpibfi_container" src="<?php echo $thirdImg['sizes']['two-third-story']; ?>" srcset="<?php echo $thirdImg['sizes']['two-third-story2x']; ?>" alt="<?php echo $thirdImg['alt']; ?>" style="padding:<?php the_sub_field('image_padding');?>" />
 
                                 <?php } ?>
                                 <?php if(get_sub_field('need_credit') == 'yes') {
@@ -94,7 +96,12 @@
                             <?php }
                         }?>
                     </div>
-                    <div class="one-third-text">
+                    <?php if(get_sub_field('which_side_do_you_want_the_image_on') == 'left') {
+                        $sidePadding ="0 0 0 20px";
+                    } else {
+                        $sidePadding ="0 20px 0 0";
+                    }?>
+                    <div class="one-third-text" style="padding:<?php echo $sidePadding; ?>">
                         <?php the_sub_field('content'); ?>
                     </div>
                     <div class="clearfix"></div>
@@ -117,7 +124,7 @@
                         <?php if(have_rows('images')) {
                             while(have_rows('images')) { the_row();?>
                                 <?php $thirdImg = get_sub_field('image'); ?>
-                                <img class="jpibfi_container" src="<?php echo $thirdImg['sizes']['one-column']; ?>" srcset="<?php echo $thirdImg['sizes']['one-column2x']; ?>" alt="<?php echo $thirdImg['alt']; ?>" />
+                                <img style="padding:<?php the_sub_field('image_padding'); ?>;" class="jpibfi_container" src="<?php echo $thirdImg['sizes']['one-column']; ?>" srcset="<?php echo $thirdImg['sizes']['one-column2x']; ?>" alt="<?php echo $thirdImg['alt']; ?>" style="padding:<?php the_sub_field('image_padding');?>" />
                                 <?php if(get_sub_field('need_credit') == 'yes') {
                                     $textSide = get_sub_field('left_or_right?');
                                     if(get_sub_field('should_this_be_a_caption_instead?') == 'yes') { ?>
@@ -133,7 +140,12 @@
                             <?php }
                         }?>
                     </div>
-                    <div class="two-third-text">
+                    <?php if(get_sub_field('which_side_do_you_want_the_image_on') == 'left') {
+                        $sidePadding ="0 0 0 20px";
+                    } else {
+                        $sidePadding ="0 20px 0 0";
+                    }?>
+                    <div class="two-third-text" style="padding:<?php echo $sidePadding; ?>">
                         <?php the_sub_field('content'); ?>
                     </div>
                     <div class="clearfix"></div>
@@ -152,8 +164,8 @@
                             <?php while(have_rows('left_side')) { the_row();
                                 if(get_row_layout() == 'images') {
                                     $questionIMG = get_sub_field('image'); ?>
-                                    <img class="jpibfi_container" src="<?php echo $questionIMG['sizes']['half-story']; ?>" alt="<?php echo $questionIMG['alt']; ?>" srcset="<?php echo $questionIMG['sizes']['half-story2x']; ?>" />
-                                    <?php if(get_sub_field('need_credit') == 'yes') {
+                                    <img style="padding:<?php the_sub_field('image_padding'); ?>;" class="jpibfi_container" src="<?php echo $questionIMG['sizes']['half-story']; ?>" alt="<?php echo $questionIMG['alt']; ?>" srcset="<?php echo $questionIMG['sizes']['half-story2x']; ?>" />
+                                    <?php if(get_sub_field('need_credit?') == 'yes') {
                                         $textSide = get_sub_field('left_or_right?');
                                         if(get_sub_field('should_this_be_a_caption_instead?') == 'yes') { ?>
                                             <p class="photo-caption" style="text-align:<?php echo $textSide; ?>">

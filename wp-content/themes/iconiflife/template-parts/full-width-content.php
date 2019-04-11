@@ -19,18 +19,18 @@
                 $imgField = get_sub_field('image'); ?>
                 <div class="full-column" style="padding:<?php the_sub_field('padding_options');?>;">
                   <?php if(get_sub_field('link')) { ?>
-                    <a href="<?php the_sub_field('link'); ?>" target="_blank"><img class="nopin" src="<?php echo $imgField['sizes']['in-story']; ?>" srcset="<?php echo $imgField['sizes']['in-story2x']; ?>" class="jpibfi_container" /></a>
+                    <a href="<?php the_sub_field('link'); ?>" target="_blank"><img class="nopin" src="<?php echo $imgField['sizes']['in-story']; ?>" srcset="<?php echo $imgField['sizes']['in-story2x']; ?>" class="jpibfi_container img-container" /></a>
                   <?php } else { ?>
-                    <img src="<?php echo $imgField['sizes']['in-story']; ?>" srcset="<?php echo $imgField['sizes']['in-story2x']; ?>" class="jpibfi_container" />
+                    <img src="<?php echo $imgField['sizes']['in-story']; ?>" srcset="<?php echo $imgField['sizes']['in-story2x']; ?>" class="jpibfi_container img-container" />
                   <?php } ?>
                     <?php if(get_sub_field('need_credit') == 'yes') {
                         $textSide = get_sub_field('left_or_right?');
                         if(get_sub_field('should_this_be_a_caption_instead?') == 'yes') { ?>
-                            <p class="photo-caption" style="text-align:<?php echo $textSide; ?>">
+                            <p class="photo-caption" style="text-align:<?php echo $textSide; ?>; padding-right:<?php the_sub_field('caption_right_padding'); ?>;">
                                 <?php the_sub_field('credit'); ?>
                             </p>
                         <?php } else { ?>
-                            <p class="photo-credit" style="text-align:<?php echo $textSide; ?>">
+                            <p class="photo-credit" style="text-align:<?php echo $textSide; ?>; padding-right:<?php the_sub_field('caption_right_padding'); ?>;">
                                 <?php the_sub_field('credit'); ?>
                             </p>
                         <?php } ?>
@@ -89,9 +89,13 @@
                             while(have_rows('slide')) { the_row();
                                 $slideIMG = get_sub_field('image'); ?>
                                 <div class="slide-item">
-                                    <img src="<?php echo $slideIMG['sizes']['in-story']; ?>" alt="<?php echo $slideIMG['alt']; ?>" srcset="<?php echo $slideIMG['sizes']['in-story2x']; ?>" />
+                                    <?php if(get_sub_field('image_link')){ ?>
+                                        <a href="<?php the_sub_field('image_link');?>" target="_blank"><img src="<?php echo $slideIMG['sizes']['in-story']; ?>" alt="<?php echo $slideIMG['alt']; ?>" srcset="<?php echo $slideIMG['sizes']['in-story2x']; ?>" /></a>
+                                    <?php } else {?>
+                                        <img src="<?php echo $slideIMG['sizes']['in-story']; ?>" alt="<?php echo $slideIMG['alt']; ?>" srcset="<?php echo $slideIMG['sizes']['in-story2x']; ?>" />
+                                    <?php } ?>
                                     <?php if(get_sub_field('need_credit') == 'yes') {
-                                        $textSide = get_sub_field('left_or_right?');
+                                        $textSide = get_sub_field('left_or_right');
                                         if(get_sub_field('should_this_be_a_caption_instead?') == 'yes') { ?>
                                             <p class="photo-caption" style="text-align:<?php echo $textSide; ?>">
                                                 <?php the_sub_field('credit'); ?>

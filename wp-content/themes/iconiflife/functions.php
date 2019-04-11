@@ -44,6 +44,7 @@ add_image_size( 'two-column', 743, false);
 add_image_size( 'featured-crave', 140, 140, true);
 add_image_size( 'clinger-column', 600, false);
 add_image_size( 'home-feature', 870, 512, true);
+add_image_size( 'market-pic', 370, 258, false);
 add_image_size( 'home-mini-feature', 250, 218, true);
 add_image_size( 'third-list-image', 600, false);
 add_image_size( 'old-stories', 342, 303, true);
@@ -411,9 +412,51 @@ function my_custom_styles( $init_array ) {
             'wrapper' => true,
         ),
         array(
+            'title' => 'Featured Side Title',
+            'block' => 'span',
+            'classes' => 'featured-side-title',
+            'wrapper' => true,
+        ),
+        array(
             'title' => 'Barlow Text',
             'block' => 'span',
             'classes' => 'barlow',
+            'wrapper' => true,
+        ),
+        array(
+            'title' => 'Special Title',
+            'block' => 'span',
+            'classes' => 'special-title',
+            'wrapper' => true,
+        ),
+        array(
+            'title' => 'Extra Large Special Title',
+            'block' => 'span',
+            'classes' => 'xlrg-special-title',
+            'wrapper' => true,
+        ),
+        array(
+            'title' => 'Special Sub',
+            'block' => 'span',
+            'classes' => 'special-sub',
+            'wrapper' => true,
+        ),
+        array(
+            'title' => 'Fashion Title',
+            'block' => 'span',
+            'classes' => 'fashion-title',
+            'wrapper' => true,
+        ),
+        array(
+            'title' => 'Fashion Sub',
+            'block' => 'span',
+            'classes' => 'fashion-sub',
+            'wrapper' => true,
+        ),
+        array(
+            'title' => 'Fashion Sub Dark Link',
+            'block' => 'span',
+            'classes' => 'fashion-sub dark-link',
             'wrapper' => true,
         ),
     );
@@ -432,7 +475,7 @@ add_filter( 'tiny_mce_before_init', 'my_custom_styles' );
 
 function vipx_remove_cpt_slug( $post_link, $post, $leavename ) {
 
-    if ( ! in_array( $post->post_type, array( 'design', 'food', 'travel', 'people', 'style' ) ) || 'publish' != $post->post_status )
+    if ( ! in_array( $post->post_type, array( 'design', 'food', 'travel', 'special', 'style' ) ) || 'publish' != $post->post_status )
         return $post_link;
 
     $post_link = str_replace( '/' . $post->post_type . '/', '/', $post_link );
@@ -454,7 +497,7 @@ function vipx_parse_request_tricksy( $query ) {
 
     // 'name' will be set if post permalinks are just post_name, otherwise the page rule will match
     if ( ! empty( $query->query['name'] ) )
-        $query->set( 'post_type', array( 'post', 'design', 'food', 'travel', 'people', 'style', 'page' ) );
+        $query->set( 'post_type', array( 'post', 'design', 'food', 'travel', 'special', 'style', 'page' ) );
 
 }
 add_action( 'pre_get_posts', 'vipx_parse_request_tricksy' );
@@ -475,6 +518,91 @@ function excerpt($limit) {
   return $excerpt;
 }
 
+/* ========================================================================= */
+/* Hey, Man, maybe don't resize them gifs */
+/* ========================================================================= */
+
+function disable_upload_sizes( $sizes, $metadata ) {
+
+    // Get filetype data.
+    $filetype = wp_check_filetype($metadata['file']);
+
+    // Check if is gif.
+    if($filetype['type'] == 'image/gif') {
+        // Unset sizes if file is gif.
+        $sizes = array();
+    }
+
+    // Return sizes you want to create from image (None if image is gif.)
+    return $sizes;
+}
+add_filter('intermediate_image_sizes_advanced', 'disable_upload_sizes', 10, 2);
+
+
+/* ========================================================================= */
+/* Index authors in searchWP */
+/* ========================================================================= */
+
+function my_searchwp_extra_metadata( $extra_meta, $post_being_indexed ) {
+
+    // available author meta: http://codex.wordpress.org/Function_Reference/get_the_author_meta
+
+    // retrieve the author's name(s)
+    $author_nicename      = get_the_author_meta( 'user_nicename', $post_being_indexed->post_author );
+    $author_display_name  = get_the_author_meta( 'display_name', $post_being_indexed->post_author );
+    $author_nickname      = get_the_author_meta( 'nickname', $post_being_indexed->post_author );
+    $author_first_name    = get_the_author_meta( 'first_name', $post_being_indexed->post_author );
+    $author_last_name     = get_the_author_meta( 'last_name', $post_being_indexed->post_author );
+
+    // grab the author bio
+    $author_bio           = get_the_author_meta( 'description', $post_being_indexed->post_author );
+
+    // index the author name and bio with each post
+    $extra_meta['my_author_meta_nicename']     = $author_nicename;
+    $extra_meta['my_author_meta_display_name'] = $author_display_name;
+    $extra_meta['my_author_meta_nickname']     = $author_nickname;
+    $extra_meta['my_author_meta_first_name']   = $author_first_name;
+    $extra_meta['my_author_meta_last_name']    = $author_last_name;
+    $extra_meta['my_author_meta_bio']          = $author_bio;
+
+    return $extra_meta;
+}
+add_filter( 'searchwp_extra_metadata', 'my_searchwp_extra_metadata', 10, 2 );
+
+function my_searchwp_author_meta_keys( $keys )
+{
+    // the keys we used to store author meta (see https://gist.github.com/jchristopher/8558947 for more info)
+    $my_custom_author_meta_keys = array(
+        'my_author_meta_nicename',
+        'my_author_meta_display_name',
+        'my_author_meta_nickname',
+        'my_author_meta_first_name',
+        'my_author_meta_last_name',
+        'my_author_meta_bio'
+    );
+
+    // merge my custom meta keys with the existing keys
+    $keys = array_merge( $keys, $my_custom_author_meta_keys );
+
+    // make sure there aren't any duplicates
+    $keys = array_unique( $keys );
+
+    return $keys;
+}
+
+add_filter( 'searchwp_custom_field_keys', 'my_searchwp_author_meta_keys', 10, 1 );
+
+/* ========================================================================= */
+/*   functions.php    */
+/*   Use alm_query_args filter to pass data to SearchWP.   */
+/*   https://connekthq.com/plugins/ajax-load-more/docs/filter-hooks/#alm_query_args  */
+/* ========================================================================= */
+function my_alm_query_args_searchwp($args){
+   $engine = 'default'; // default = default
+   $args = apply_filters('alm_searchwp', $args, $engine); // Make call to alm_searchwp filter
+   return $args;
+}
+add_filter( 'alm_query_args_searchwp', 'my_alm_query_args_searchwp');
 
 
 

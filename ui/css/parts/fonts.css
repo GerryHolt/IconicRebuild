@@ -398,3 +398,9 @@
 .icon-angle-right:before {
   content: "\70";
 }
+.icon-bars:before {
+  content: "\6e";
+}
+.icon-cancel:before {
+  content: "\71";
+}

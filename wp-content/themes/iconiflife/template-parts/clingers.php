@@ -20,8 +20,13 @@ if( get_row_layout() == 'clingers' ) {
                                 $clingerImg = get_sub_field('column_image'); }?>
                                 <div class="clinger_three_column">
                                     <?php if(get_sub_field('column_image')) { ?>
-
-                                        <img class="jpibfi_container" src="<?php echo $clingerImg['sizes']['clinger-column']; ?>" alt="<?php echo $clingerImg['alt']; ?>" />
+                                        <?php if(get_sub_field('image_url')) { ?>
+                                            <a href="<?php the_sub_field('image_url'); ?>">
+                                                <img class="jpibfi_container" src="<?php echo $clingerImg['sizes']['clinger-column']; ?>" alt="<?php echo $clingerImg['alt']; ?>" />
+                                            </a>
+                                        <?php } else { ?>
+                                            <img class="jpibfi_container" src="<?php echo $clingerImg['sizes']['clinger-column']; ?>" alt="<?php echo $clingerImg['alt']; ?>" />
+                                        <?php }?>
                                     <?php } ?>
                                     <?php if(get_sub_field('need_credit') == 'yes') {
                                         $textSide = get_sub_field('left_or_right?');
@@ -171,7 +176,7 @@ if( get_row_layout() == 'clingers' ) {
                                                 <?php the_sub_field('credit'); ?>
                                             </p>
                                         <?php } else { ?>
-                                            <p class="photo-credit" style="text-align:<?php echo $textSide; ?>">
+                                            <p class="photo-credit" style="padding-top:7px; text-align:<?php echo $textSide; ?>">
                                                 <?php the_sub_field('credit'); ?>
                                             </p>
                                         <?php } ?>
@@ -212,6 +217,86 @@ if( get_row_layout() == 'clingers' ) {
             <?php }
             ////////////////////////////////
             // Close Full Width content
+            ////////////////////////////////
+            ////////////////////////////////
+            // OPEN Clinger Two Column WYSIWYG
+            ////////////////////////////////
+            if( get_row_layout() == 'clinger_two_column_wysiwyg' ) { ?>
+                <div class="clinger">
+                    <div class="clinger-top"></div>
+                    <div class="clinger-body">
+                        <h5><?php the_sub_field('title'); ?></h5>
+                        <div class="half-col">
+                            <?php if(have_rows('left_side')) {?>
+                                <div class="left-side">
+                                    <?php while(have_rows('left_side')) { the_row();
+                                        if(get_row_layout() == 'images') {
+                                            $leftIMG = get_sub_field('image');?>
+                                            <?php if(get_sub_field('link')) { ?>
+                                              <a href="<?php the_sub_field('link'); ?>" target="_blank"><img class="nopin" style="padding:<?php the_sub_field('padding');?>" class="jpibfi_container" src="<?php echo $leftIMG['sizes']['half-story']; ?>" alt="<?php echo $leftIMG['alt']; ?>" srcset="<?php echo $leftIMG['sizes']['half-story2x']; ?>" /></a>
+                                            <?php } else { ?>
+                                              <img style="padding:<?php the_sub_field('padding');?>" class="jpibfi_container" src="<?php echo $leftIMG['sizes']['half-story']; ?>" alt="<?php echo $leftIMG['alt']; ?>" srcset="<?php echo $leftIMG['sizes']['half-story2x']; ?>" />
+                                            <?php } ?>
+
+                                            <?php if(get_sub_field('need_credit?') == 'yes') {
+                                                $textSide = get_sub_field('left_or_right?');
+                                                if(get_sub_field('should_this_be_a_caption_instead?') == 'yes') { ?>
+                                                    <p class="photo-caption" style="text-align:<?php echo $textSide; ?>">
+                                                        <?php the_sub_field('credit'); ?>
+                                                    </p>
+                                                <?php } else { ?>
+                                                    <p class="photo-credit" style="text-align:<?php echo $textSide; ?>">
+                                                        <?php the_sub_field('credit'); ?>
+                                                    </p>
+                                                <?php } ?>
+                                            <?php } ?>
+                                        <?php }
+                                        if(get_row_layout() == 'content') { ?>
+                                            <div style="padding:<?php the_sub_field('padding');?>">
+                                            <?php the_sub_field('text'); ?>
+                                            </div>
+                                        <?php }
+                                    } ?>
+                                </div>
+                            <?php }
+                            if(have_rows('right_side')) { ?>
+                                <div class="right-side">
+                                    <?php while(have_rows('right_side')) { the_row();
+                                        if(get_row_layout() == 'images') {
+                                            $rightIMG = get_sub_field('image'); ?>
+                                            <?php if(get_sub_field('link')) { ?>
+                                              <a href="<?php the_sub_field('link'); ?>" target="_blank"><img class="nopin" style="padding:<?php the_sub_field('padding');?>" class="jpibfi_container" src="<?php echo $rightIMG['sizes']['half-story']; ?>" alt="<?php echo $rightIMG['alt']; ?>" srcset="<?php echo $rightIMG['sizes']['half-story2x']; ?>" /></a>
+                                            <?php } else { ?>
+                                              <img style="padding:<?php the_sub_field('padding');?>" class="jpibfi_container" src="<?php echo $rightIMG['sizes']['half-story']; ?>" alt="<?php echo $rightIMG['alt']; ?>" srcset="<?php echo $rightIMG['sizes']['half-story2x']; ?>" />
+                                            <?php } ?>
+
+                                            <?php if(get_sub_field('need_credit?') == 'yes') {
+                                                $textSide = get_sub_field('left_or_right?');
+                                                if(get_sub_field('should_this_be_a_caption_instead?') == 'yes') { ?>
+                                                    <p class="photo-caption" style="text-align:<?php echo $textSide; ?>">
+                                                        <?php the_sub_field('credit'); ?>
+                                                    </p>
+                                                <?php } else { ?>
+                                                    <p class="photo-credit" style="text-align:<?php echo $textSide; ?>">
+                                                        <?php the_sub_field('credit'); ?>
+                                                    </p>
+                                                <?php } ?>
+                                            <?php } ?>
+                                        <?php }
+                                        if(get_row_layout() == 'content') {?>
+                                            <div style="padding:<?php the_sub_field('padding');?>">
+                                            <?php the_sub_field('text'); ?>
+                                            </div>
+                                        <?php }
+                                    } ?>
+                                </div>
+                            <?php } ?>
+                        </div>
+                    </div>
+                </div>
+            <?php }
+            ////////////////////////////////
+            // CLOSE Clinger Two Column WYSIWYG
             ////////////////////////////////
         }
     }
