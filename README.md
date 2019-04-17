@@ -2,6 +2,9 @@
 
 Original Developer: Gerry Holt
 
+### 1.4
+Woocomerce functionality added to the site.
+
 ### 1.3.3
 Did a very dumb thing by downloading outdated files from the ui folder from the server and then uploaded them to github. rectified this.
 
