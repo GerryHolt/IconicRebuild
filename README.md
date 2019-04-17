@@ -2,7 +2,7 @@
 
 Original Developer: Gerry Holt
 
-### 1.4
+### 1.4.0
 Woocomerce functionality added to the site.
 
 ### 1.3.3
